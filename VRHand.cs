@@ -92,17 +92,13 @@ namespace RiggedHandVisualizer
         }
 
         // Display a hand with the provided joint information
-        public void show(HandJoint[] data, bool drawAxis, bool toggleHand, Handed whichHand)
+        public void show(HandJoint[] data, bool toggleHand, Handed whichHand)
         {
             Pose wrist = Input.Hand(whichHand).wrist;
 
             foreach (JointInfo j in jointInfo)
             {
-                if (drawAxis)
-                {
-                    Lines.AddAxis(j.node.ModelTransform.Pose);
-
-                }
+                
                 if (j.rootBone)
                 {
                     j.node.ModelTransform = Matrix.TRS(wrist.position, wrist.orientation * defaultBoneRot, rootScale);
