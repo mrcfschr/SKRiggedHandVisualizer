@@ -37,7 +37,7 @@ namespace RiggedHandVisualizer
 
 
             bool toggleHand = true;
-            bool renderHand = true;
+            bool renderHand = false;
          
             Pose windowPose = new Pose(0, 0.2f, -0.3f, Quat.LookDir(0, 0, 1));
             Quat rot = Quat.FromAngles(90, 0, 180);

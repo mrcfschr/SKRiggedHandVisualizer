@@ -32,16 +32,20 @@ namespace RiggedHandVisualizer
         {
             string modelName = "Hand_" + whichHand.ToString() + ".glb";
             handModel = Model.FromFile(modelName);
+
+            Material mat = Material.Default;
+            mat[MatParamName.ColorTint] = Color.Black;
+            foreach (var item in handModel.Visuals)
+            {
+                item.Material = mat;
+            }
+
             rootScale = 1;
             nodeScale = 1;
             defaultBoneRot = Quat.FromAngles(90, 0, 180);
             var nodes = handModel.Visuals;
 
-            foreach (var node in nodes)
-            {
-                //making sure the high performaance mat is applied
-                node.Material = Material.Default;
-            }
+           
 
             jointInfo = new JointInfo[] {
                 // currently SK doesn't have an enum for wrist but populates the thumb root and knucklemajor with the same value,
